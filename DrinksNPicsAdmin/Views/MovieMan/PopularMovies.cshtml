@@ -1,0 +1,30 @@
+@model IEnumerable<MoviesDBModels.Result>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>title</title>
+</head>
+<body>
+<div>
+    <div class="row">
+        @foreach (var movie in Model)
+        {
+            <div class="col-sm-3" style="padding: 2px">
+                <div class="card">
+                    <img src="@("https://image.tmdb.org/t/p/w500" + @movie.backdrop_path)" class="card-img-top" alt="Backdrop Image">
+                    <div class="card-body">
+                        <h5 class="card-title">@movie.title</h5>
+                        <p class="card-text">@movie.overview</p>
+                        <a href="#" class="btn btn-primary">Add to Schedule</a>
+                    </div>
+                </div>
+            </div>
+        }
+        
+    </div>
+    
+</div>
+</body>
+</html>
