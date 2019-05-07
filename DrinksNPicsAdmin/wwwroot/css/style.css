@@ -1,0 +1,16 @@
+.card .card-body .dual-label-title {
+    margin: 0px;
+    padding: 0px;
+}
+
+.card .card-body .dual-label-element {
+    font-weight: bold;
+    font-size: xx-large;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.card {
+    padding: 20px;
+    margin-bottom: 20px;
+}
