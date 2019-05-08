@@ -30,6 +30,13 @@ namespace DrinksNPicsAdmin.Controllers
             List<Result> Movies = current.Result.results as List<Result>;
             foreach (var movie in Movies)
             {
+                Console.WriteLine(movie.overview);
+                if (movie.overview.Length > 100)
+                {
+                    movie.overview = movie.overview.Substring(0, 100);
+                    movie.overview += "...";
+                    Console.WriteLine("Fixing length...");
+                }
                 //movie.overview = movie.overview.Substring(0, 200);
             }
             return View(Movies);
