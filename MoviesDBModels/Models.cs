@@ -83,4 +83,12 @@ namespace MoviesDBModels
         public int total_pages { get; set; }
         public List<Result> results { get; set; }
     }
+
+    public class CinemaRoom
+    {
+        public int Id;
+        public int Capacity;
+        public int RoomNumber;
+
+    }
 }

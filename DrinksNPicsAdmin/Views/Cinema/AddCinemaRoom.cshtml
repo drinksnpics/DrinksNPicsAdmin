@@ -1,0 +1,21 @@
+@model MoviesDBModels.CinemaRoom
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<div class="container">
+    <h2>title</h2>
+    <form asp-controller="Cinema" asp-action="RegisterCinema" method="post">
+        <div class="form-group">
+            <label for="roomNumber">Room Number</label>
+            <input type="text" class="form-control" asp-for="RoomNumber" placeholder="2">
+        </div>
+        <div class="form-group">
+            <label for="roomNumber">Room Capacity</label>
+            <input type="text" class="form-control" asp-for="Capacity" placeholder="40">
+        </div>
+        <button type="submit" class="btn btn-dark">Create</button>
+    </form>
+</div>

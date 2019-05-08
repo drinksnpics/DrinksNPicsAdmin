@@ -8,10 +8,11 @@
 </head>
 <body>
 <div>
+    <h1>Popular Movies</h1>
     <div class="row">
         @foreach (var movie in Model)
         {
-            <div class="col-sm-3" style="padding: 2px">
+            <div class="col-sm-4" style="padding: 15px">
                 <div class="card">
                     <img src="@("https://image.tmdb.org/t/p/w500" + @movie.backdrop_path)" class="card-img-top" alt="Backdrop Image">
                     <div class="card-body">
@@ -22,9 +23,9 @@
                 </div>
             </div>
         }
-        
+
     </div>
-    
+
 </div>
 </body>
 </html>
