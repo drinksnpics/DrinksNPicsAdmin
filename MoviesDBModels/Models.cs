@@ -86,7 +86,9 @@ namespace MoviesDBModels
 
     public class CinemaRoom
     {
-        public int id;
+        public int Id;
         public int Capacity;
+        public int RoomNumber;
+
     }
 }
