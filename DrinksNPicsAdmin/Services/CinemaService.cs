@@ -1,5 +1,8 @@
 using System.Threading.Tasks;
 using Firebase.Database;
+using Firebase.Database.Query;
+using DrinksNPicsAdmin.Models.Firebase;
+using MoviesDBModels;
 
 namespace DrinksNPicsAdmin.Services
 {
@@ -17,6 +20,16 @@ namespace DrinksNPicsAdmin.Services
                 {
                     AuthTokenAsyncFactory = () => Task.FromResult(auth)
                 });
+        }
+        
+        public async Task AddCinemaRoom(CinemaRoom NewRoom)
+        {
+            await firebaseClient.Child("Rooms").PostAsync<CinemaRoom>(NewRoom);
+        }
+        
+        public async Task GetCinemaRooms(CinemaRoom NewRoom)
+        {
+            await firebaseClient.Child("Rooms").OnceAsync<CinemaRoom>();
         }
         
 

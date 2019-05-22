@@ -1,7 +1,9 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Firebase.Database;
 using Firebase.Database.Query;
 using DrinksNPicsAdmin.Models.Firebase;
+using MoviesDBModels;
 
 
 namespace DrinksNPicsAdmin.Services
@@ -38,6 +40,11 @@ namespace DrinksNPicsAdmin.Services
                 return _user;
             }
             return null;
+        }
+
+        public async Task AddCinemaRoom(CinemaRoom NewRoom)
+        {
+            var res = await firebaseClient.Child("Rooms").OrderByKey().OnceAsync<CinemaRoom>();
         }
     }
 }
