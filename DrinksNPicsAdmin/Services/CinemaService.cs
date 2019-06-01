@@ -59,9 +59,6 @@ namespace DrinksNPicsAdmin.Services
 
             return foodItems;
         }
-        
-        
-        
 
     }
 }

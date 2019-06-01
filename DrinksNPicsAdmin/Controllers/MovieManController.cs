@@ -41,5 +41,11 @@ namespace DrinksNPicsAdmin.Controllers
             }
             return View(Movies);
         }
+        
+        public IActionResult CinemaCatalogue()
+        {
+            List<CatalogueMovie> catalogue = new List<CatalogueMovie>();
+            return View(catalogue);
+        }
     }
 }

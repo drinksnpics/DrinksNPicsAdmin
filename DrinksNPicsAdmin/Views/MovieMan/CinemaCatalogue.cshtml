@@ -1,0 +1,37 @@
+@model List<MoviesDBModels.CatalogueMovie>
+
+@{
+    ViewBag.Title = "Catalogue";
+    Layout = "_Layout";
+}
+
+<div class="container row">
+    <h2>Movie Catalogue</h2>
+    <button  class="btn btn-dark" style="float: right" onclick="location.href='@Url.Action("AddFoodItem", "Cinema")'"><i class="fas fa-plus"></i> Add Movies</button>
+</div>
+
+<div class="container">
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Movie Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Release Date</th>
+            <th scope="col">Length</th>
+            <th scope="col">Rating</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var movie in Model)
+        {
+            <tr>
+                <th scope="row">@movie.movieTitle</th>
+                <td>@movie.movieeDescription</td>
+                <td>@movie.releaseDate.ToString("MMMM dd, yyyy")</td>
+                <td>@movie.movieLength</td>
+                <td>@movie.movieRating</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>

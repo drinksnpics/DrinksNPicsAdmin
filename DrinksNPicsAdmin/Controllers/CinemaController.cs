@@ -54,10 +54,11 @@ namespace DrinksNPicsAdmin.Controllers
             return View(products);
         }
 
-        public IActionResult CinemaRooms()
+        public async Task<IActionResult> CinemaRooms()
         {
-            List<CinemaRoom> cinemaRooms = CbService.GetCinemaRooms().Result;
+            List<CinemaRoom> cinemaRooms = await CbService.GetCinemaRooms();
             return View(cinemaRooms);
         }
+        
     }
 }
