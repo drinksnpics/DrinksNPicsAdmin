@@ -59,6 +59,6 @@ namespace DrinksNPicsAdmin.Controllers
             List<CinemaRoom> cinemaRooms = await CbService.GetCinemaRooms();
             return View(cinemaRooms);
         }
-        
+
     }
 }

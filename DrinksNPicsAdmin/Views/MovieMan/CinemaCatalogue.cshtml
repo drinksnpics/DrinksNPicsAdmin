@@ -7,7 +7,7 @@
 
 <div class="container row">
     <h2>Movie Catalogue</h2>
-    <button  class="btn btn-dark" style="float: right" onclick="location.href='@Url.Action("AddFoodItem", "Cinema")'"><i class="fas fa-plus"></i> Add Movies</button>
+    <button  class="btn btn-dark" style="float: right" onclick="location.href='@Url.Action("PopularMovies", "MovieMan")'"><i class="fas fa-plus"></i> Add Movies</button>
 </div>
 
 <div class="container">
@@ -19,6 +19,7 @@
             <th scope="col">Release Date</th>
             <th scope="col">Length</th>
             <th scope="col">Rating</th>
+            <th scope="col"></th>
         </tr>
         </thead>
         <tbody>
@@ -30,6 +31,7 @@
                 <td>@movie.releaseDate.ToString("MMMM dd, yyyy")</td>
                 <td>@movie.movieLength</td>
                 <td>@movie.movieRating</td>
+                <td><button  class="btn btn-danger" onclick="location.href='@Url.Action("AddFoodItem", "Cinema")'"><i class="fas fa-plus"></i> Delete [WIP]</button></td>
             </tr>
         }
         </tbody>

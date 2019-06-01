@@ -59,6 +59,24 @@ namespace DrinksNPicsAdmin.Services
 
             return foodItems;
         }
+        
+        public async Task AddMovieToCatalogue(CatalogueMovie newMovie)
+        {
+            await firebaseClient.Child("Catalogue").PostAsync<CatalogueMovie>(newMovie);
+
+        }
+        
+        public async Task<List<CatalogueMovie>> GetCatalogue()
+        {
+            var rawCatalogue = await firebaseClient.Child("Catalogue").OnceAsync<CatalogueMovie>();
+            List<CatalogueMovie> moviesInCatalogue = new List<CatalogueMovie>();
+            foreach (var movie in rawCatalogue)
+            {
+                moviesInCatalogue.Add(movie.Object);
+            }
+
+            return moviesInCatalogue;
+        }
 
     }
 }
