@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Firebase.Database;
 using Firebase.Database.Query;
@@ -25,11 +26,37 @@ namespace DrinksNPicsAdmin.Services
         public async Task AddCinemaRoom(CinemaRoom NewRoom)
         {
             await firebaseClient.Child("Rooms").PostAsync<CinemaRoom>(NewRoom);
+
         }
         
-        public async Task GetCinemaRooms(CinemaRoom NewRoom)
+        public async Task<List<CinemaRoom>> GetCinemaRooms()
         {
-            await firebaseClient.Child("Rooms").OnceAsync<CinemaRoom>();
+            var rooms = await firebaseClient.Child("Rooms").OnceAsync<CinemaRoom>();
+            List<CinemaRoom> cinemaRooms = new List<CinemaRoom>();
+            foreach (var room in rooms)
+            {
+                cinemaRooms.Add(room.Object);
+            }
+
+            return cinemaRooms;
+        }
+        
+        public async Task AddFoodItem(FoodItem foodItem)
+        {
+            await firebaseClient.Child("FoodProducts").PostAsync<FoodItem>(foodItem);
+
+        }
+        
+        public async Task<List<FoodItem>> GetFoodItems()
+        {
+            var rooms = await firebaseClient.Child("FoodProducts").OnceAsync<FoodItem>();
+            List<FoodItem> foodItems = new List<FoodItem>();
+            foreach (var room in rooms)
+            {
+                foodItems.Add(room.Object);
+            }
+
+            return foodItems;
         }
         
 

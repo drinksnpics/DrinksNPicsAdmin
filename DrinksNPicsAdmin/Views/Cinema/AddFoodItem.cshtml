@@ -1,0 +1,29 @@
+@model MoviesDBModels.FoodItem
+
+@{
+    ViewBag.Title = "Create Food Item";
+    Layout = "_Layout";
+}
+
+<div class="container">
+    <h2>Create Foo Item</h2>
+    <form asp-controller="Cinema" asp-action="CreateProduct" method="post">
+        <div class="form-group">
+            <label for="productName">Product Name</label>
+            <input type="text" class="form-control" asp-for="productName" name="productName" value="Product Name">
+        </div>
+        <div class="form-group">
+            <label for="roomNumber">Product Price ($MXN)</label>
+            <input type="number" step="any" min="0" class="form-control" asp-for="price" name="price" placeholder="2.50">
+        </div>
+        <div class="form-group">
+            <label for="roomNumber">Description</label>
+            <input type="text" class="form-control" asp-for="description" name="description" placeholder="Happinnes in a bottle">
+        </div>
+        <div class="form-group">
+            <label for="avaliable">Make avaliable</label>
+            <input type="checkbox" class="form-control" asp-for="avaliable" name="avaliable">
+        </div>
+        <button type="submit" class="btn btn-dark">Create</button>
+    </form>
+</div>

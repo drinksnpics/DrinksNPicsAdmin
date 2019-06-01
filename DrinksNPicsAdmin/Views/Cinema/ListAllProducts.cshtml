@@ -1,0 +1,31 @@
+@using MoviesDBModels
+@model List<MoviesDBModels.FoodItem>
+
+<div class="container row">
+    <h2>Product Listing</h2>
+    <button  class="btn btn-dark" style="float: right" onclick="location.href='@Url.Action("AddFoodItem", "Cinema")'"><i class="fas fa-plus"></i> Add Room</button>
+</div>
+
+<div class="container">
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Product Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Price (MXN)</th>
+            <th scope="col">Avaliability</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var foodItem in Model)
+        {
+            <tr>
+                <th scope="row">@foodItem.productName</th>
+                <td>Room @foodItem.description</td>
+                <td>$@String.Format("{0:0,0.00}", foodItem.price) MXN</td>
+                <td>@foodItem.avaliable</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
