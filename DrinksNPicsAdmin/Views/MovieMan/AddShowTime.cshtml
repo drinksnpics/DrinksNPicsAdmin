@@ -1,0 +1,26 @@
+@model ShowtimeFormModel
+
+@{
+    ViewBag.Title = "Create Showtime";
+    Layout = "_Layout";
+  
+}
+
+<h2>Create Showtime</h2>
+<form asp-controller="MovieMan" asp-action="CreateShowTime" method="post">
+    <div class="form-group">
+        <label for="roomId">Cinema Room</label>
+        <select class="form-control" asp-for="roomId" name="roomId" asp-items="Model.rooms"></select>
+    </div>
+    <div class="form-group">
+        <label for="roomId">Movie</label>
+        <select class="form-control" asp-for="movieId" name="movieId" asp-items="Model.movies"></select>
+    </div>
+  
+  <div class="form-group">
+      <label for="roomId">Showtime Time</label>
+      <input class="form-control" asp-for="startDate" type="datetime-local" name="startDate"></input>
+  </div>
+    <input type="submit" value="Create Showtime"/>
+</form>
+

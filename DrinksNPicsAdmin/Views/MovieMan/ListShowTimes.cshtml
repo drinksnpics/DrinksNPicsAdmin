@@ -1,0 +1,38 @@
+@model List<MoviesDBModels.RoomShowTimesViewModel>
+
+@{
+    ViewBag.Title = "Showtimes";
+    Layout = "_Layout";
+}
+
+<div class="container row">
+    <h2>Showtimes</h2>
+    <button  class="btn btn-dark" style="float: right" onclick="location.href='@Url.Action("AddShowTime", "MovieMan")'"><i class="fas fa-plus"></i> Add Showtime</button>
+</div>
+<div class="container">
+    <h2>Showtimes</h2>
+    @foreach (var room in Model)
+    {
+        <h3>Room @room.cinemaRoom.RoomNumber</h3>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Movie</th>
+                <th scope="col">Start Time</th>
+                <th scope="col">End Time</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var showTime in room.showTimes)
+            {
+                <tr>
+                    <th scope="row">@showTime.movieName</th>
+                    <td>@showTime.startDate</td>
+                    <td>@showTime.endDate</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    }
+</div>
+
