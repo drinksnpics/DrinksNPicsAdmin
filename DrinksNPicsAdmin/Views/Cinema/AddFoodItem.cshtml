@@ -10,15 +10,19 @@
     <form asp-controller="Cinema" asp-action="CreateProduct" method="post">
         <div class="form-group">
             <label for="productName">Product Name</label>
-            <input type="text" class="form-control" asp-for="productName" name="productName" value="Product Name">
+            <input type="text" class="form-control" asp-for="productName" name="productName" placeholder="Product Name">
         </div>
         <div class="form-group">
-            <label for="roomNumber">Product Price ($MXN)</label>
+            <label for="price">Product Price ($MXN)</label>
             <input type="number" step="any" min="0" class="form-control" asp-for="price" name="price" placeholder="2.50">
         </div>
         <div class="form-group">
-            <label for="roomNumber">Description</label>
+            <label for="description">Description</label>
             <input type="text" class="form-control" asp-for="description" name="description" placeholder="Happinnes in a bottle">
+        </div>
+        <div class="form-group">
+            <label for="image_url">Image URL</label>
+            <input type="text" class="form-control" asp-for="image_url" name="image_url" placeholder="Image URL">
         </div>
         <div class="form-group">
             <label for="avaliable">Make avaliable</label>

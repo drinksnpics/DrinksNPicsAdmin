@@ -103,6 +103,8 @@ namespace MoviesDBModels
         public String description { get; set; }
 
         public bool avaliable { get; set; }
+
+        public String image_url { get; set; }
     }
 
     public class CatalogueMovie
