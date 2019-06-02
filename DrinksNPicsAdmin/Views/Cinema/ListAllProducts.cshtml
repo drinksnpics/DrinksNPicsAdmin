@@ -1,9 +1,10 @@
 @using MoviesDBModels
 @model List<MoviesDBModels.FoodItem>
 
-<div class="container row">
-    <h2>Product Listing</h2>
-    <button  class="btn btn-dark" style="float: right" onclick="location.href='@Url.Action("AddFoodItem", "Cinema")'"><i class="fas fa-plus"></i> Add Room</button>
+<div class="container">
+    <h2 style="display: inline-block">Product Listing</h2>
+    <button  class="btn btn-dark form-inline" style="float: right; display: inline-block" onclick="location.href='@Url.Action("AddFoodItem", "Cinema")'"><i class="fas fa-plus"></i> Add Product</button>
+    <br/>
 </div>
 
 <div class="container">

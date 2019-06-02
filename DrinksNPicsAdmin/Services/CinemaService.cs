@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Firebase.Database;
 using Firebase.Database.Query;
@@ -46,12 +47,16 @@ namespace DrinksNPicsAdmin.Services
         
         public async Task<List<CinemaRoom>> GetCinemaRooms()
         {
-            var rooms = await firebaseClient.Child("Rooms").OnceAsync<CinemaRoom>();
+            var rooms = await firebaseClient.Child("Rooms")
+                .OrderBy("RoomNumber")
+                .OnceAsync<CinemaRoom>();
             List<CinemaRoom> cinemaRooms = new List<CinemaRoom>();
             foreach (var room in rooms)
             {
                 cinemaRooms.Add(room.Object);
             }
+            
+            cinemaRooms = cinemaRooms.OrderBy(x => x.RoomNumber).ToList();
 
             return cinemaRooms;
         }
