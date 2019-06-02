@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using MoviesDBModels;
 using MoviesDBModels.Providers;
 using System.Threading.Tasks;
+using DrinksNPicsAdmin.Models;
 using DrinksNPicsAdmin.Services;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -133,7 +134,12 @@ namespace DrinksNPicsAdmin.Controllers
             }
             
             // Adding items to view
-            ShowTime newShowTime = new ShowTime();
+            ShowtimeFormModel newShowTime = new ShowtimeFormModel()
+            {
+                movies = movieSelector,
+                rooms = roomSelector,
+                showTime = new ShowTime()
+            };
 
             return View(newShowTime);
         }
