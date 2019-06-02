@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net.Sockets;
 
 namespace MoviesDBModels
 {
@@ -37,7 +38,7 @@ namespace MoviesDBModels
         public int budget { get; set; }
         public List<Genre> genres { get; set; }
         public string homepage { get; set; }
-        public int id { get; set; }
+        public long id { get; set; }
         public string imdb_id { get; set; }
         public string original_language { get; set; }
         public string original_title { get; set; }
@@ -47,7 +48,7 @@ namespace MoviesDBModels
         public List<ProductionCompany> production_companies { get; set; }
         public List<ProductionCountry> production_countries { get; set; }
         public string release_date { get; set; }
-        public int revenue { get; set; }
+        public long revenue { get; set; }
         public int runtime { get; set; }
         public List<SpokenLanguage> spoken_languages { get; set; }
         public string status { get; set; }
@@ -86,9 +87,58 @@ namespace MoviesDBModels
 
     public class CinemaRoom
     {
-        public int Id;
-        public int Capacity;
-        public int RoomNumber;
+        public String Id { get; set; }
+        public int Capacity { get; set; }
+        public int RoomNumber { get; set; }
 
     }
+
+    public class FoodItem
+    {
+        public String id { get; set; }
+        public String productName { get; set; }
+        
+        public float price { get; set; }
+
+        public String description { get; set; }
+
+        public bool avaliable { get; set; }
+    }
+
+    public class CatalogueMovie
+    {
+        public string id { get; set; }
+        public long movieId { get; set; } // API handles id's as ints
+        public string movieTitle { get; set; }
+        public string movieeDescription { get; set; }
+        public int movieLength { get; set; }
+        public double movieRating { get; set; }
+        public DateTime releaseDate { get; set; }
+
+    }
+
+    public class ShowTime
+    {
+        public string id { get; set; }
+        
+        // Foreign Keys
+        public string movieId { get; set; }
+        public string movieName { get; set; }
+        public long movieAPIid { get; set; }
+        
+        public string roomId { get; set; }
+
+        public DateTime startDate { get; set; }
+        public DateTime endDate { get; set; }
+        
+        public int avaliableSitting { get; set; }
+        
+    }
+
+    public class RoomShowTimesViewModel
+    {
+        public CinemaRoom cinemaRoom { get; set; }
+        public List<ShowTime> showTimes { get; set; }
+    }
+
 }

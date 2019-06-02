@@ -19,10 +19,10 @@ namespace MoviesDBModels.Providers
             _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json")); 
         }
 
-        public async Task<Movie> GetMovieInfo(CancellationToken cancellationToken)
+        public async Task<Movie> GetMovieInfo(CancellationToken cancellationToken, long movieId)
         {
             cancellationToken.ThrowIfCancellationRequested();
-            int id = 550;
+            long id = movieId;
             HttpResponseMessage response = await _client.GetAsync("movie/" + id.ToString() + "?api_key=" + _token);
             if (response.IsSuccessStatusCode)
             {
