@@ -6,6 +6,7 @@ using MoviesDBModels;
 using MoviesDBModels.Providers;
 using System.Threading.Tasks;
 using DrinksNPicsAdmin.Services;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace DrinksNPicsAdmin.Controllers
 {
@@ -54,8 +55,6 @@ namespace DrinksNPicsAdmin.Controllers
                         newForCatalogue.Add(movie);
                     }
                 }
-                
-                //movie.overview = movie.overview.Substring(0, 200);
             }
             return View(newForCatalogue);
         }
@@ -85,5 +84,64 @@ namespace DrinksNPicsAdmin.Controllers
             
             return RedirectToAction("CinemaCatalogue", "MovieMan");
         }
+
+        public async Task<IActionResult> ListShowTimes()
+        {
+            List<RoomShowTimesViewModel> showTimesByRoom = new List<RoomShowTimesViewModel>();
+            
+            // Gets current rooms
+            List<CinemaRoom> currentRooms = _cinemaService.GetCinemaRooms().Result;
+            foreach (var room in currentRooms)
+            {
+                showTimesByRoom.Add( new RoomShowTimesViewModel()
+                {
+                    cinemaRoom =  room,
+                    showTimes = new List<ShowTime>()
+                });
+            }
+            return View(showTimesByRoom);
+        }
+
+        public async Task<IActionResult> AddShowTime()
+        {
+            List<CatalogueMovie> moviesFromCatalogue = _cinemaService.GetCatalogue().Result;
+            List<CinemaRoom> avaliableRooms = await _cinemaService.GetCinemaRooms();
+            
+            List<SelectListItem> movieSelector = new List<SelectListItem>();
+            List<SelectListItem> roomSelector = new List<SelectListItem>();
+            
+            // Gets movies and creates a selector with their ID
+            foreach (var movie in moviesFromCatalogue)
+            {
+                movieSelector.Add( new SelectListItem()
+                {
+                    Text = movie.movieTitle,
+                    Value = movie.movieId.ToString(),
+                    Selected = false,
+                });
+            }
+
+            foreach (var room in avaliableRooms)
+            {
+                roomSelector.Add(new SelectListItem()
+                {
+                    Text = "Room " + room.RoomNumber,
+                    Value = room.Id,
+                    Selected = false
+                    
+                });
+            }
+            
+            // Adding items to view
+            ShowTime newShowTime = new ShowTime();
+
+            return View(newShowTime);
+        }
+        public async Task<IActionResult> CreateShowtime()
+        {
+            
+            return View();
+        }
+        
     }
 }
