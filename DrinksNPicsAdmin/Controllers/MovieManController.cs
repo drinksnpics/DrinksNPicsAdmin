@@ -97,7 +97,7 @@ namespace DrinksNPicsAdmin.Controllers
                 showTimesByRoom.Add( new RoomShowTimesViewModel()
                 {
                     cinemaRoom =  room,
-                    showTimes = new List<ShowTime>()
+                    showTimes = await _cinemaService.GetShowTimesByRoom(room.Id)
                 });
             }
             return View(showTimesByRoom);
@@ -117,7 +117,7 @@ namespace DrinksNPicsAdmin.Controllers
                 movieSelector.Add( new SelectListItem()
                 {
                     Text = movie.movieTitle,
-                    Value = movie.movieId.ToString(),
+                    Value = movie.id,
                     Selected = false,
                 });
             }
@@ -138,15 +138,33 @@ namespace DrinksNPicsAdmin.Controllers
             {
                 movies = movieSelector,
                 rooms = roomSelector,
-                showTime = new ShowTime()
+                startDate = DateTime.Now,
+                roomId = "",
+                movieId = ""
             };
 
             return View(newShowTime);
         }
-        public async Task<IActionResult> CreateShowtime()
+        
+        [HttpPost]
+        public async Task<IActionResult> CreateShowtime(ShowtimeFormModel newShowTime)
         {
-            
-            return View();
+            CinemaRoom room = await _cinemaService.GetCinemaRoom(newShowTime.roomId);
+            CatalogueMovie movie = await _cinemaService.GetMovieFromCatalogue(newShowTime.movieId);
+            ShowTime newST = new ShowTime()
+            {
+                id = Guid.NewGuid().ToString(),
+                avaliableSitting = room.Capacity,
+                startDate = newShowTime.startDate,
+                endDate = newShowTime.startDate.AddMinutes((double) movie.movieLength),
+                movieId = movie.id,
+                movieName = movie.movieTitle,
+                roomId = room.Id,
+                movieAPIid = movie.movieId
+            };
+
+            await _cinemaService.AddShowtime(newST);
+            return RedirectToAction("ListShowTimes", "MovieMan");
         }
         
     }

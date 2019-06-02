@@ -20,14 +20,14 @@ namespace DrinksNPicsAdmin.Controllers
         }
         
         [HttpPost]
-        public IActionResult RegisterCinema(CinemaRoom NewRoom)
+        public async Task<IActionResult> RegisterCinema(CinemaRoom NewRoom)
         {
             // Console.WriteLine(NewRoom.Capacity);
             NewRoom.Id = Guid.NewGuid().ToString();
             
             
             // Update Firebase
-            CbService.AddCinemaRoom(NewRoom);
+            await CbService.AddCinemaRoom(NewRoom);
             return RedirectToAction("CinemaRooms", "Cinema");
         }
 
