@@ -143,4 +143,11 @@ namespace MoviesDBModels
         public List<ShowTime> showTimes { get; set; }
     }
 
+    public class Order
+    {
+        public int cantidad { get; set; }
+        public float precio { get; set; }
+        public String producto { get; set; }        
+    }
+
 }
