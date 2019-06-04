@@ -97,7 +97,7 @@ namespace DrinksNPicsAdmin.Controllers
                 showTimesByRoom.Add( new RoomShowTimesViewModel()
                 {
                     cinemaRoom =  room,
-                    showTimes = await _cinemaService.GetShowTimesByRoom(room.Id)
+                    showTimes = await _cinemaService.GetShowTimesByRoomForDate(room.Id, DateTime.Today)
                 });
             }
             return View(showTimesByRoom);

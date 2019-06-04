@@ -15,8 +15,8 @@
     <table class="table">
         <thead>
         <tr>
-            <th scope="col">Movie Name</th>
-            <th scope="col">Description</th>
+            <th scope="col" style="width: 10%">Movie Name</th>
+            <th scope="col" style="width: 40%">Description</th>
             <th scope="col">Release Date</th>
             <th scope="col">Length</th>
             <th scope="col">Rating</th>
@@ -30,9 +30,10 @@
                 <th scope="row">@movie.movieTitle</th>
                 <td>@movie.movieeDescription</td>
                 <td>@movie.releaseDate.ToString("MMMM dd, yyyy")</td>
-                <td>@movie.movieLength</td>
-                <td>@movie.movieRating</td>
-                <td><button  class="btn btn-danger" onclick="location.href='@Url.Action("AddFoodItem", "Cinema")'"><i class="fas fa-plus"></i> Delete [WIP]</button></td>
+                <td>@movie.movieLength min</td>
+                <td>@movie.movieRating / 10</td>
+                <td><button  class="btn btn-dark" onclick="location.href='@Url.Action("AddFoodItem", "Cinema")'"><i class="fas fa-edit"></i></button></td>
+                <td><button  class="btn btn-danger" onclick="location.href='@Url.Action("AddFoodItem", "Cinema")'"><i class="fas fa-trash"></i></button></td>
             </tr>
         }
         </tbody>

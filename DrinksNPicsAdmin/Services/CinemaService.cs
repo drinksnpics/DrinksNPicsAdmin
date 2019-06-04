@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -119,6 +120,24 @@ namespace DrinksNPicsAdmin.Services
             foreach (var showTime in showTimes)
             {
                 if (showTime.Object.roomId == roomId)
+                {
+                    st.Add(showTime.Object);
+                }
+            }
+            return st;
+        }
+        
+        public async Task<List<ShowTime>> GetShowTimesByRoomForDate(string roomId, DateTime date)
+        {
+            DateTime dateQuery = date.Date;
+            List<ShowTime> st = new List<ShowTime>();
+            var showTimes = await firebaseClient.Child("Showtime")
+                .OrderByKey()
+                .OnceAsync<ShowTime>();
+
+            foreach (var showTime in showTimes)
+            {
+                if (showTime.Object.roomId == roomId && showTime.Object.startDate.Date == dateQuery)
                 {
                     st.Add(showTime.Object);
                 }
