@@ -28,7 +28,8 @@
                 <td>Room @room.RoomNumber</td>
                 <td>@room.Capacity</td>
                 <td>Yes</td>
-                <td>Functions</td>
+                <td><button  class="btn btn-dark" onclick="location.href='@Url.Action("AddCinemaRoom", "Cinema", new { id = @room.Id })'"><i class="fas fa-edit"></i></button></td>
+
             </tr>
         }
         </tbody>

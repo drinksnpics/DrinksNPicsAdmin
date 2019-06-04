@@ -8,13 +8,14 @@
 <div class="container">
     <h2>Room Creation</h2>
     <form asp-controller="Cinema" asp-action="RegisterCinema" method="post">
+        <input type="hidden" class="form-control" asp-for="@Model.Id" name="id">
         <div class="form-group">
             <label for="roomNumber">Room Number</label>
-            <input type="text" class="form-control" asp-for="RoomNumber" name="RoomNumber" placeholder="2">
+            <input type="number" class="form-control" asp-for="@Model.RoomNumber" name="RoomNumber">
         </div>
         <div class="form-group">
             <label for="roomNumber">Room Capacity</label>
-            <input type="text" class="form-control" asp-for="Capacity" name="Capacity" placeholder="40">
+            <input type="number" class="form-control" asp-for="@Model.Capacity" name="Capacity" >
         </div>
         <button type="submit" class="btn btn-dark">Create</button>
     </form>

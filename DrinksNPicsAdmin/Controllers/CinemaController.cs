@@ -13,9 +13,13 @@ namespace DrinksNPicsAdmin.Controllers
     {
         public static CinemaService CbService = new CinemaService();
         // GET
-        public IActionResult AddCinemaRoom()
+        public async Task<IActionResult> AddCinemaRoom(string id)
         {
             CinemaRoom Room = new CinemaRoom();
+            if (id != null)
+            {
+                Room = await CbService.GetCinemaRoom(id);
+            }
             return View(Room);
         }
         
@@ -23,7 +27,11 @@ namespace DrinksNPicsAdmin.Controllers
         public async Task<IActionResult> RegisterCinema(CinemaRoom NewRoom)
         {
             // Console.WriteLine(NewRoom.Capacity);
-            NewRoom.Id = Guid.NewGuid().ToString();
+            if (NewRoom.Id == null)
+            {
+                NewRoom.Id = Guid.NewGuid().ToString();
+            }
+            
             
             
             // Update Firebase
