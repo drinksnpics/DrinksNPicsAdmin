@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrinksNPicsAdmin", "DrinksN
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoviesDBModels", "MoviesDBModels\MoviesDBModels.csproj", "{94E4EE10-244C-40DA-8868-3B28D0B97D22}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrinksNPicsUT", "DrinksNPicsUT\DrinksNPicsUT.csproj", "{AB874E66-2844-4362-86E0-0D16FA18E373}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{94E4EE10-244C-40DA-8868-3B28D0B97D22}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{94E4EE10-244C-40DA-8868-3B28D0B97D22}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{94E4EE10-244C-40DA-8868-3B28D0B97D22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB874E66-2844-4362-86E0-0D16FA18E373}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB874E66-2844-4362-86E0-0D16FA18E373}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB874E66-2844-4362-86E0-0D16FA18E373}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB874E66-2844-4362-86E0-0D16FA18E373}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
