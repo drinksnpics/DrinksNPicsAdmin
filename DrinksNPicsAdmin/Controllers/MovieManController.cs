@@ -86,8 +86,15 @@ namespace DrinksNPicsAdmin.Controllers
             return RedirectToAction("CinemaCatalogue", "MovieMan");
         }
 
-        public async Task<IActionResult> ListShowTimes()
+        public async Task<IActionResult> ListShowTimes(string date)
         {
+            DateTime currentDate = DateTime.Today;
+
+            if (date != null)
+            {
+                currentDate = DateTime.Parse(date);
+            }
+
             List<RoomShowTimesViewModel> showTimesByRoom = new List<RoomShowTimesViewModel>();
             
             // Gets current rooms
@@ -97,7 +104,7 @@ namespace DrinksNPicsAdmin.Controllers
                 showTimesByRoom.Add( new RoomShowTimesViewModel()
                 {
                     cinemaRoom =  room,
-                    showTimes = await _cinemaService.GetShowTimesByRoomForDate(room.Id, DateTime.Today)
+                    showTimes = await _cinemaService.GetShowTimesByRoomForDate(room.Id, currentDate.Date)
                 });
             }
             return View(showTimesByRoom);

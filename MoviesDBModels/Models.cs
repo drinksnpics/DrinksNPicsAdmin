@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Net.Sockets;
 
 namespace MoviesDBModels
 {
@@ -141,6 +140,7 @@ namespace MoviesDBModels
     {
         public CinemaRoom cinemaRoom { get; set; }
         public List<ShowTime> showTimes { get; set; }
+        
     }
 
     public class CinemaDashBoard

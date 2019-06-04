@@ -3,12 +3,33 @@
 @{
     ViewBag.Title = "Showtimes";
     Layout = "_Layout";
+    
+    DateTime currentDate = DateTime.Now;
+    List<SelectListItem> querybleDates = new List<SelectListItem>();
+
+    for (int i = 0; i < 15; i++)
+    {
+        querybleDates.Add( new SelectListItem()
+        {
+            Text = currentDate.AddDays(i).ToString(),
+            Value = currentDate.AddDays(i).ToString()
+        });
+    }
 }
 
 <div class="container">
-    <h2 style="display: inline-block">Showtimes</h2>
+    <h2 style="display: inline-block">Showtimes for </h2>
     <button  class="btn btn-dark form-inline" style="float: right; display: inline-block" onclick="location.href='@Url.Action("AddShowTime", "MovieMan")'"><i class="fas fa-plus"></i> Add Showtime</button>
     <br/>
+    
+    <form asp-controller="MovieMan" asp-action="ListShowTimes" method="post">
+        <div class="form-group">
+            <label for="roomId">Cinema Room</label>
+            <select class="form-control" name="date" asp-items="querybleDates"></select>
+        </div>
+        <input type="submit" value="Search"/>
+    </form>
+    
     <div class="container">
         @foreach (var room in Model)
             {
