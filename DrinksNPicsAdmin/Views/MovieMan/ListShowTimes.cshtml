@@ -11,24 +11,29 @@
     {
         querybleDates.Add( new SelectListItem()
         {
-            Text = currentDate.AddDays(i).ToString(),
+            Text = currentDate.AddDays(i).ToString("yyyy MMMM dd"),
             Value = currentDate.AddDays(i).ToString()
         });
     }
 }
 
 <div class="container">
-    <h2 style="display: inline-block">Showtimes for </h2>
+    <h2 style="display: inline-block">Showtimes for @ViewData["Date"]</h2>
     <button  class="btn btn-dark form-inline" style="float: right; display: inline-block" onclick="location.href='@Url.Action("AddShowTime", "MovieMan")'"><i class="fas fa-plus"></i> Add Showtime</button>
     <br/>
+    <div class="container">
+        <form asp-controller="MovieMan" asp-action="ListShowTimes" method="post">
+            <h3>Find Showtimes for date</h3>
+            <div class="row">
+                <div class="col-sm-6">
+                    <select class="form-control" name="date" asp-items="querybleDates"></select>
+                </div>
+                <div class="col-sm-6"><input type="submit" class="btn btn-dark" value="Search"/></div>
+            </div>
+        </form>
+    </div>
+    <br/>
     
-    <form asp-controller="MovieMan" asp-action="ListShowTimes" method="post">
-        <div class="form-group">
-            <label for="roomId">Cinema Room</label>
-            <select class="form-control" name="date" asp-items="querybleDates"></select>
-        </div>
-        <input type="submit" value="Search"/>
-    </form>
     
     <div class="container">
         @foreach (var room in Model)

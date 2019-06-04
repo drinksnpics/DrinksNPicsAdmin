@@ -107,6 +107,8 @@ namespace DrinksNPicsAdmin.Controllers
                     showTimes = await _cinemaService.GetShowTimesByRoomForDate(room.Id, currentDate.Date)
                 });
             }
+
+            ViewData["Date"] = currentDate.ToString("yyyy MMMM dd");
             return View(showTimesByRoom);
         }
 
