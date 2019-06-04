@@ -10,7 +10,7 @@
 <div>
     <div class="container">
         <div class="card mb-3">
-          <img class="card-img-top" style="height: 300px;width: 150;background-size: cover;" src='@("https://image.tmdb.org/t/p/w500" + @Model.backdrop_path)' alt="Card image cap">
+          <img class="card-img-top" style="height: 300px;width: 150px;background-size: cover;" src='@("https://image.tmdb.org/t/p/w500" + @Model.backdrop_path)' alt="Card image cap">
           <div class="card-body">
               <h4 class="card-title">@Model.original_title (@Model.vote_average / 10)</h4>
               <p>Runtime: @Model.runtime min</p>
@@ -27,7 +27,7 @@
               <div class="container row">
                 @foreach (var prod in Model.production_companies)
                 {
-                    <img style="height: 50px;width: 50;" src='@("https://image.tmdb.org/t/p/w500" + @prod.logo_path)' alt="Card image cap">
+                    <img style="height: 50px;width: 50px;" src='@("https://image.tmdb.org/t/p/w500" + @prod.logo_path)' alt="Card image cap">
 
                 }
               </div>
