@@ -110,6 +110,20 @@ namespace DrinksNPicsAdmin.Services
             return null;
         }
         
+        public async Task<FoodItem> GetSnackProduct(string itemId)
+        {
+            var prods = await firebaseClient.Child("FoodProducts")
+                .OrderByKey()
+                .EqualTo(itemId)
+                .OnceAsync<FoodItem>();
+
+            foreach (var prod in prods)
+            {
+                return prod.Object;
+            }
+            return null;
+        }
+        
         public async Task<List<ShowTime>> GetShowTimesByRoom(string roomId)
         {
             List<ShowTime> st = new List<ShowTime>();
