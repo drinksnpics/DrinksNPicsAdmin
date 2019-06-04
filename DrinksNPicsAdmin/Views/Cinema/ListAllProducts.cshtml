@@ -16,17 +16,20 @@
             <th scope="col">Price (MXN)</th>
             <th scope="col">Avaliability</th>
             <th scope="col">Image</th>
+            <th scope="col"></th>
         </tr>
         </thead>
         <tbody>
         @foreach (var foodItem in Model)
         {
             <tr>
-                <th scope="row">@foodItem.productName</th>
+                <td>@foodItem.productName</td>
                 <td>@foodItem.description</td>
                 <td>$@String.Format("{0:0,0.00}", foodItem.price) MXN</td>
                 <td>@foodItem.avaliable</td>
                 <td><img src="@foodItem.image_url" alt="Image" style="max-height: 150px; max-width: 150px;"></td>
+                <td><button  class="btn btn-dark" onclick="location.href='@Url.Action("AddFoodItem", "Cinema", new { id = @foodItem.id })'"><i class="fas fa-edit"></i></button></td>
+
             </tr>
         }
         </tbody>

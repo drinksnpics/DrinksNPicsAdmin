@@ -31,15 +31,23 @@ namespace DrinksNPicsAdmin.Controllers
             return RedirectToAction("CinemaRooms", "Cinema");
         }
 
-        public IActionResult AddFoodItem()
+        public async Task<IActionResult> AddFoodItem(string id)
         {
-            return View();
+            FoodItem item = new FoodItem();
+            if (id != null)
+            {
+                item = await CbService.GetSnackProduct(id);
+            }
+            return View(item);
         }
 
         public async Task<IActionResult> CreateProduct(FoodItem newItem)
         {
             Console.WriteLine(newItem.productName);
-            newItem.id = Guid.NewGuid().ToString();
+            if (newItem.id == null)
+            {
+                newItem.id = Guid.NewGuid().ToString();
+            }
             await CbService.AddFoodItem(newItem);
             return RedirectToAction("ListAllProducts", "Cinema");
         }

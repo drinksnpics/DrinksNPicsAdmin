@@ -33,8 +33,7 @@
                 <td>@movie.movieLength min</td>
                 <td>@movie.movieRating / 10</td>
                 <td><button  class="btn btn-dark" onclick="location.href='@Url.Action("MovieDetail", "MovieMan", new { id = @movie.movieId })'"><i class="fas fa-eye"></i></button></td>
-                <td><button  class="btn btn-dark" onclick="location.href='@Url.Action("AddFoodItem", "Cinema")'"><i class="fas fa-edit"></i></button></td>
-                <td><button  class="btn btn-danger" onclick="location.href='@Url.Action("AddFoodItem", "Cinema")'"><i class="fas fa-trash"></i></button></td>
+                @* <td><button  class="btn btn-danger" onclick="location.href='@Url.Action("AddFoodItem", "Cinema")'"><i class="fas fa-trash"></i></button></td> *@
             </tr>
         }
         </tbody>

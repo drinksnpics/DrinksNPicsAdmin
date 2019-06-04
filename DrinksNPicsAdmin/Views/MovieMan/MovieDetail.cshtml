@@ -10,26 +10,29 @@
 <div>
     <div class="container">
         <div class="card mb-3">
-          <img class="card-img-top" src='@("https://image.tmdb.org/t/p/w500" + @Model.poster_path)' alt="Card image cap">
+          <img class="card-img-top" style="height: 300px;width: 150;background-size: cover;" src='@("https://image.tmdb.org/t/p/w500" + @Model.backdrop_path)' alt="Card image cap">
           <div class="card-body">
               <h4 class="card-title">@Model.original_title (@Model.vote_average / 10)</h4>
-              <p>Runtime: @Model.runtime</p>
+              <p>Runtime: @Model.runtime min</p>
               <div class="container row">
+                  <p>Genre: <span> </span></p>
                   @foreach (var genre in Model.genres)
-                    {
-                        <p>@genre.name </p> <p> | </p>
-                    }
+                  {
+                      <p>@genre.name </p>
+                      <p> | </p>
+                  }
               </div>
               
               <p class="card-text">@Model.overview</p>
               <div class="container row">
                 @foreach (var prod in Model.production_companies)
                 {
-                    <p>@prod.name </p> <p> | </p>
+                    <img style="height: 50px;width: 50;" src='@("https://image.tmdb.org/t/p/w500" + @prod.logo_path)' alt="Card image cap">
+
                 }
               </div>
               
-              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+              <p class="card-text"><small class="text-muted">Released on @Model.release_date.ToString()</small></p>
           </div>
         </div>
     </div>

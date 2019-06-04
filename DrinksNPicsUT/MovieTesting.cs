@@ -52,7 +52,7 @@ namespace DrinksNPicsUT
             float unitPrice = 0;
             for (int i = 0; i < 10; i++)
             {
-                FoodItem item = await _cinemaService.GetSnackProduct("-LgFXmrcfjPKhYFANQb7");
+                FoodItem item = await _cinemaService.GetSnackProduct("1d305ffa-e4b8-4260-8811-8846db49627e");
                 Assert.That(item.productName, Is.EqualTo("Coke"));
                 itemstoBuy.Add(item);
                 unitPrice = item.price;
