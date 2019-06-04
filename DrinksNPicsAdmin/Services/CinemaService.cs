@@ -131,5 +131,16 @@ namespace DrinksNPicsAdmin.Services
             await firebaseClient.Child("Showtime/" + newShowtime.id).PutAsync<ShowTime>(newShowtime);
         }
 
+        public async Task<List<Order>> GetOrders()
+        {
+            var rawOrders = await firebaseClient.Child("Orders").OnceAsync<Order>();
+            List<Order> orders = new List<Order>();
+            foreach (var order in rawOrders)
+            {
+                orders.Add(order.Object);
+            }
+
+            return orders;
+        }        
     }
 }

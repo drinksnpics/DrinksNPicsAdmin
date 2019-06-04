@@ -103,6 +103,8 @@ namespace MoviesDBModels
         public String description { get; set; }
 
         public bool avaliable { get; set; }
+
+        public String image_url { get; set; }
     }
 
     public class CatalogueMovie
@@ -147,6 +149,13 @@ namespace MoviesDBModels
 
         public int availableFoodItems { get; set; }
         public int totalFoodItems { get; set; }
+    }
+
+    public class Order
+    {
+        public int cantidad { get; set; }
+        public float precio { get; set; }
+        public String producto { get; set; }
     }
 
 }

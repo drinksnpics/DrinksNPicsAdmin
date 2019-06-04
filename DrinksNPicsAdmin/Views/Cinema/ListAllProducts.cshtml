@@ -15,6 +15,7 @@
             <th scope="col">Description</th>
             <th scope="col">Price (MXN)</th>
             <th scope="col">Avaliability</th>
+            <th scope="col">Image</th>
         </tr>
         </thead>
         <tbody>
@@ -22,9 +23,10 @@
         {
             <tr>
                 <th scope="row">@foodItem.productName</th>
-                <td>Room @foodItem.description</td>
+                <td>@foodItem.description</td>
                 <td>$@String.Format("{0:0,0.00}", foodItem.price) MXN</td>
                 <td>@foodItem.avaliable</td>
+                <td><img src="@foodItem.image_url" alt="Image" style="max-height: 150px; max-width: 150px;"></td>
             </tr>
         }
         </tbody>
