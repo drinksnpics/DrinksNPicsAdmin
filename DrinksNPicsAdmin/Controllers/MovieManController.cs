@@ -175,6 +175,13 @@ namespace DrinksNPicsAdmin.Controllers
             await _cinemaService.AddShowtime(newST);
             return RedirectToAction("ListShowTimes", "MovieMan");
         }
-        
+
+        public async Task<IActionResult> MovieDetail(long id)
+        {
+            Movie currentMovie = new Movie();
+            currentMovie = await _prov.GetMovieInfo(CancellationToken.None, id);
+            return View(currentMovie);
+        }
     }
+    
 }

@@ -8,9 +8,31 @@
 </head>
 <body>
 <div>
-    <p>
-        @ViewData["movie"];
-    </p>
+    <div class="container">
+        <div class="card mb-3">
+          <img class="card-img-top" src='@("https://image.tmdb.org/t/p/w500" + @Model.poster_path)' alt="Card image cap">
+          <div class="card-body">
+              <h4 class="card-title">@Model.original_title (@Model.vote_average / 10)</h4>
+              <p>Runtime: @Model.runtime</p>
+              <div class="container row">
+                  @foreach (var genre in Model.genres)
+                    {
+                        <p>@genre.name </p> <p> | </p>
+                    }
+              </div>
+              
+              <p class="card-text">@Model.overview</p>
+              <div class="container row">
+                @foreach (var prod in Model.production_companies)
+                {
+                    <p>@prod.name </p> <p> | </p>
+                }
+              </div>
+              
+              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>
