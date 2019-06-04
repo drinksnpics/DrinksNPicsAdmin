@@ -141,4 +141,12 @@ namespace MoviesDBModels
         public List<ShowTime> showTimes { get; set; }
     }
 
+    public class CinemaDashBoard
+    {
+        public int totalRooms { get; set; }
+
+        public int availableFoodItems { get; set; }
+        public int totalFoodItems { get; set; }
+    }
+
 }

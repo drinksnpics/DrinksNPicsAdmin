@@ -1,4 +1,5 @@
-﻿@{
+﻿@model MoviesDBModels.CinemaDashBoard
+@{
     ViewData["Title"] = "Dashboard";
 }
 <div>
@@ -11,7 +12,7 @@
                         <h2 class="card-title">Cinema Rooms</h2>
             
                         <p class="dual-label-title">operating rooms</p>
-                        <p class="dual-label-element">16</p>
+                        <p class="dual-label-element">@Model.totalRooms</p>
             
                         <p class="dual-label-title">unused rooms</p>
                         <p class="dual-label-element">2</p>
@@ -50,14 +51,14 @@
                     <div class="card-body">
                         <h2 class="card-title">Food Summary</h2>
                     
-                        <p class="dual-label-title">operating windows</p>
-                        <p class="dual-label-element">7 (10) </p>
+                        <p class="dual-label-title">item availability</p>
+                        <p class="dual-label-element">@Model.availableFoodItems (@Model.totalFoodItems) </p>
                     
                         <p class="dual-label-title">total revenue</p>
                         <p class="dual-label-element">$435,123.00 mxn</p>
                         
                     
-                        <a href="#" class="btn btn-primary">manage rooms</a>
+                        <a href="#" class="btn btn-dark">manage snack store</a>
                     </div>
                 </div>
             </div>
