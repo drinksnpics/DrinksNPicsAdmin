@@ -50,7 +50,7 @@ namespace DrinksNPicsAdmin.Controllers
         }
         public IActionResult ListAllProducts()
         {
-            List<FoodItem> products = CbService.GetFoodItems().Result;
+            List<FoodItem> products = CbService.GetFoodItems().Result;            
             return View(products);
         }
 
@@ -58,6 +58,12 @@ namespace DrinksNPicsAdmin.Controllers
         {
             List<CinemaRoom> cinemaRooms = await CbService.GetCinemaRooms();
             return View(cinemaRooms);
+        }
+
+        public async Task<IActionResult> ListAllOrders()
+        {
+            List<Order> orders = CbService.GetOrders().Result;
+            return View(orders);
         }
 
     }
