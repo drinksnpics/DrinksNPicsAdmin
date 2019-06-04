@@ -1,0 +1,31 @@
+@using MoviesDBModels
+@model List<MoviesDBModels.Order>
+
+<div class="container">
+    <h2 style="display: inline-block">Orders Listing</h2>    
+    <br/>
+</div>
+
+<div class="container">
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Product Name</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Price (MXN)</th>
+            <th scope="col">Total (MXN)</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var orderItem in Model)
+        {
+            <tr>
+                <th scope="row">@orderItem.producto</th>
+                <td>@orderItem.cantidad</td>
+                <td>$@String.Format("{0:0,0.00}", orderItem.precio) MXN</td>
+                <td>$@String.Format("{0:0,0.00}", orderItem.precio*@orderItem.cantidad) MXN</td>     
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
