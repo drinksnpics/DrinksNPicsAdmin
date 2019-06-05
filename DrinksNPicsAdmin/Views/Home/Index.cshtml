@@ -19,10 +19,7 @@
                         <p class="dual-label-element">@Model.totalRooms</p>
             
                         <p class="dual-label-title">Unused rooms</p>
-                        <p class="dual-label-element">2</p>
-            
-                        <p class="dual-label-title">Rooms to free</p>
-                        <p class="dual-label-element">4 (in the next hour)</p>
+                        <p class="dual-label-element">2</p>         
             
                         <a href="/Cinema/CinemaRooms/" class="btn btn-dark">Manage Rooms</a>
                     </div>
@@ -52,6 +49,9 @@
                     
                         <p class="dual-label-title">Item availability</p>
                         <p class="dual-label-element">@Model.availableFoodItems (@Model.totalFoodItems) </p>
+                        
+                        <p class="dual-label-title">Total food orders</p>
+                        <p class="dual-label-element">@foodOrders orders sold</p>
                     
                         <p class="dual-label-title">Total revenue</p>
                         <p class="dual-label-element">$@String.Format("{0:0,0.00}",@foodSales) MXN</p>
