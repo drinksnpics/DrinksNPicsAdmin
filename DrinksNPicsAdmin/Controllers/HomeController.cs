@@ -34,8 +34,30 @@ namespace DrinksNPicsAdmin.Controllers
                 totalItems++;
             }
 
+            float ticketsSales = 0f;
+            int ticketOrders = 0;
+            float foodSales = 0f;
+            int foodOrders = 0;
+            List<Order> orders = _cinemaService.GetOrders().Result;
+            foreach (var item in orders)
+            {
+                if (item.precio == 70)
+                {                    
+                    ticketsSales += (item.precio*item.cantidad);
+                    ticketOrders += item.cantidad;   
+                }
+                else
+                {
+                    foodSales += (item.precio*item.cantidad);
+                    foodOrders++;  
+                }
+            }
+            ViewData["ticketsSales"] = ticketsSales;
+            ViewData["ticketOrders"] = ticketOrders;
+            ViewData["foodSales"] = foodSales;
+            ViewData["foodOrders"] = foodOrders;
             dashBoard.availableFoodItems = availabeItems;
-            dashBoard.totalFoodItems = totalItems;
+            dashBoard.totalFoodItems = totalItems;            
             return View(dashBoard);
         }
 
