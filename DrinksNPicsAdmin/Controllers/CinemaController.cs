@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using DrinksNPicsAdmin.Services;
@@ -78,8 +79,43 @@ namespace DrinksNPicsAdmin.Controllers
 
         public async Task<IActionResult> ListAllOrders()
         {
-            List<Order> orders = CbService.GetOrders().Result;
+            List<Order> orders = await CbService.GetOrders();
             return View(orders);
+        }
+
+        public async Task<IActionResult> ListAllBoughtItems()
+        {
+            List<Order> orders = await CbService.GetOrders();
+            Dictionary<string, int> bought = new Dictionary<string, int>();
+            Dictionary<string, float> prices = new Dictionary<string, float>();
+            List<OrderDetail> totalSold = new List<OrderDetail>();
+            
+            foreach (var order in orders)
+            {
+                if (!bought.ContainsKey(order.producto))
+                {
+                    bought.Add(order.producto, order.cantidad);
+                    prices.Add(order.producto, order.precio);
+                }
+                else
+                {
+                    bought[order.producto] += order.cantidad;
+                }
+            }
+
+            foreach (var key in bought.Keys)
+            {
+                totalSold.Add(new OrderDetail()
+                {
+                    productName = key,
+                    total = prices[key],
+                    totalAmount = bought[key],
+                    totalSum = bought[key] * prices[key]
+                });
+            }
+
+            totalSold = totalSold.OrderByDescending(x => x.totalAmount).ToList();
+            return View(totalSold);
         }
 
     }

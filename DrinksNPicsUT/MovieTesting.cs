@@ -31,7 +31,7 @@ namespace DrinksNPicsUT
         {
             CinemaRoom room1 = await _cinemaService.GetCinemaRoom("f5199186-9d85-4788-a8c9-a8ffc0129516");
             Assert.That(room1.Id, Is.EqualTo("f5199186-9d85-4788-a8c9-a8ffc0129516"));
-            Assert.That(room1.Capacity, Is.EqualTo(50));
+            Assert.That(room1.Capacity, Is.EqualTo(55));
             Assert.That(room1.RoomNumber, Is.EqualTo(1));
         }
         

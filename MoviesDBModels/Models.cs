@@ -158,4 +158,13 @@ namespace MoviesDBModels
         public String producto { get; set; }
     }
 
+    public class OrderDetail
+    {
+        public string productName { get; set; }
+        public int totalAmount { get; set; }
+        public float total { get; set; }
+
+        public float totalSum { get; set; }
+    }
+
 }
